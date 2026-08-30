@@ -2,6 +2,10 @@
   "sections": {
     "main": {
       "type": "lp-stratton-manual",
+      "settings": {
+        "pricing_headline": "Get Your Copy",
+        "pricing_subheadline": "One-time payment. Instant download. No subscription, ever."
+      },
       "blocks": {
         "bullet-1": { "type": "bullet", "settings": { "text": "A field-tested closing framework, not recycled theory from a business degree" } },
         "bullet-2": { "type": "bullet", "settings": { "text": "Turns objections into buying signals instead of dead ends" } },
@@ -19,9 +23,7 @@
         "module-3": { "type": "module", "settings": { "number": "Module 3", "title": "The Closing Sequence", "body": "How the floor moved a qualified prospect from interest to a firm yes." } },
         "module-4": { "type": "module", "settings": { "number": "Module 4", "title": "Certification & Training Notes", "body": "The internal notes new hires were actually drilled on before taking live calls." } },
 
-        "tier-1": { "type": "tier", "settings": { "title": "The Manual", "anchor_price": "€39,99", "offer_price": "€17,52", "featured": false, "features": "Full restored PDF\nInstant download\nLifetime access", "cta_text": "Get The Manual" } },
-        "tier-2": { "type": "tier", "settings": { "title": "Manual + Rebuttal Swipe File", "anchor_price": "€54,99", "offer_price": "€24,52", "featured": true, "features": "Everything in The Manual\nPrintable objection swipe file\nInstant download", "cta_text": "Get This Package" } },
-        "tier-3": { "type": "tier", "settings": { "title": "Manual + Swipe File + Audio", "anchor_price": "€74,99", "offer_price": "€34,52", "featured": false, "features": "Everything above\nFull audio read-through\nListen anywhere", "cta_text": "Get The Full Stack" } },
+        "tier-1": { "type": "tier", "settings": { "title": "Stratton Oakmont Training Manual", "anchor_price": "€39,99", "offer_price": "€17,52", "featured": false, "features": "Full restored, searchable PDF\nInstant digital download\nLifetime access to your copy", "buy_link": "/products/stratton-oakmont-training-manual-jordan-belfort", "cta_text": "Get The Manual Now" } },
 
         "faq-1": { "type": "faq_item", "settings": { "question": "Is this really the original manual?", "answer": "It's a restored, cleaned-up digital copy sourced from an original training document. Pages are presented as-is, for historical and educational reference." } },
         "faq-2": { "type": "faq_item", "settings": { "question": "Can't I just find a free scan online?", "answer": "You might find low-quality, incomplete scans. Ours is cleaned up, fully legible, and organized so you can actually study and use it." } },
@@ -35,7 +37,7 @@
         "bullet-1", "bullet-2", "bullet-3", "bullet-4", "bullet-5", "bullet-6",
         "symptom-1", "symptom-2", "symptom-3",
         "module-1", "module-2", "module-3", "module-4",
-        "tier-1", "tier-2", "tier-3",
+        "tier-1",
         "faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6", "faq-7"
       ]
     }

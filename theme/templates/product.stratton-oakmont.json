@@ -1,0 +1,427 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "text_Ei8p9P": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✅ Close more deals</strong>",
+            "text_style": "body"
+          }
+        },
+        "text_VHWbyF": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✅ Confident, not robotic</strong>",
+            "text_style": "body"
+          }
+        },
+        "text_CajTcE": {
+          "type": "text",
+          "settings": {
+            "text": "<strong>✅ Instant PDF download</strong>",
+            "text_style": "body"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "disabled": true,
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_BRUDfx": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .flow-pay-secure{\n    display:flex;align-items:center;justify-content:center;gap:7px;\n    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;\n    font-weight:600;font-size:14px;color:#17191C;margin:0 0 10px;\n  }\n  .flow-pay-secure svg{width:15px;height:15px;color:#9EC24D;flex:none}\n  .flow-pay-list{\n    display:flex;flex-wrap:wrap;justify-content:center;align-items:center;\n    gap:8px;list-style:none;margin:0;padding:0;\n  }\n  .flow-pay-list .icon-svg{height:32px;width:auto;border-radius:5px;display:block}\n</style>\n\n<div class=\"flow-pay-secure\">\n  <svg viewBox=\"0 0 24 24\" fill=\"none\" aria-hidden=\"true\">\n    <rect x=\"4.5\" y=\"10.5\" width=\"15\" height=\"10\" rx=\"2\" fill=\"currentColor\"/>\n    <path d=\"M7.5 10.5V8a4.5 4.5 0 019 0v2.5\" stroke=\"currentColor\" stroke-width=\"2\"/>\n  </svg>\n  <span>Secure Checkout</span>\n</div>\n\n<ul class=\"flow-pay-list\" role=\"list\">\n  {% assign payment_types = 'visa,master,american_express,maestro,discover,paypal,apple_pay,google_pay,shopify_pay' | split: ',' %}\n  {% for type in payment_types %}\n    <li>{{ type | payment_type_svg_tag: class: 'icon-svg' }}</li>\n  {% endfor %}\n</ul>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "disabled": true,
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "collapsible_tab_Bag8Vw": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "What you get",
+            "icon": "check_mark",
+            "content": "<p>A faithfully <strong>restored digital edition</strong> of the legendary Stratton Oakmont broker training manual: </p><p>The <strong>same</strong> <strong>playbook</strong> used to teach <strong>cold calling, qualifying, objection-handling</strong> and <strong>closing</strong> from the inside. </p><p>Delivered as one clean, <strong>high-resolution PDF.</strong></p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_wdLdVT": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Instant access, any device",
+            "icon": "check_mark",
+            "content": "<p>Buy today and download immediately. </p><p>No waiting, no shipping. </p><p>Read it on your <strong>laptop</strong>, <strong>tablet</strong> or <strong>phone</strong>, print it for your team, and keep it forever.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_jKiezA": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Why it still matters",
+            "icon": "check_mark",
+            "content": "<p>In a market flooded with AI-generated pitches that all sound the same, the fundamentals win. This is a global reference for how persuasion, tonality and control were really taught: timeless skills you apply with integrity today.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "text_Ei8p9P",
+        "text_VHWbyF",
+        "text_CajTcE",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "custom_liquid_BRUDfx",
+        "description",
+        "share",
+        "collapsible_tab_Bag8Vw",
+        "collapsible_tab_wdLdVT",
+        "collapsible_tab_jKiezA"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "rich_text_RmBtHU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_KJnztQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Turn an entire team into consistent closers</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_AChkzF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Give your sales floor one proven playbook. Bring average reps up to the level of your best one, using the exact scripts, qualifying and objection-handling that ran a legendary sales operation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_KJnztQ",
+        "text_AChkzF"
+      ],
+      "disabled": true,
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multirow_JMLaRP": {
+      "type": "multirow",
+      "blocks": {
+        "row_TNfMCP": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-8.webp",
+            "caption": "Benefits",
+            "heading": "<strong>Sell like it's a craft again</strong>",
+            "text": "<p><strong>Close more of the conversations you're already having</strong><br/><br/>Stop losing deals in the final five minutes. Learn to keep control, handle every objection and guide the prospect to yes, so more of your calls end in a sale instead of a \"let me think about it.\"<br/><br/><strong>Sound certain, human and impossible to ignore</strong><br/><br/>While everyone else leans on AI-written pitches that all sound the same, your tone becomes your edge. Master the confidence and delivery that make people trust you and act, without ever sounding like a script.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_J8zHm9": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-2.webp",
+            "caption": "The complete Stratton closing system, broken down",
+            "heading": "<strong>What's inside</strong>",
+            "text": "<p><em><strong>This isn't theory. </strong></em></p><p>It's the actual field manual that trained an entire floor of closers, <strong>split into the exact components you can put to work </strong>on your next call.</p><p>✅ <strong>The cold-calling scripts</strong> </p><p>✅ <strong>The qualifying framework</strong> </p><p>✅ <strong>The objection-handling playbook</strong> </p><p>✅ <strong>Tone & control</strong> </p><p>✅ <strong>The Straight Line method</strong> </p><p>✅ <strong>The closer's mindset</strong> </p><p>Study it once and you'll hear the difference on your very next call: sharper, calmer, more in control.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "row_rHtiJD": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-9.webp",
+            "caption": "",
+            "heading": "Are you a Team Leader?",
+            "text": "<p><strong>Turn an entire team into consistent closers</strong></p><p>Give your sales floor one proven playbook.</p><p>Bring average reps up to the level of your best one, using the exact scripts, qualifying and objection-handling that ran a legendary sales operation.</p>",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_TNfMCP",
+        "row_J8zHm9",
+        "row_rHtiJD"
+      ],
+      "name": "t:sections.multirow.presets.name",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "collapsible_content_za6aM8": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_kJD9Ut": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What exactly am I buying?",
+            "icon": "check_mark",
+            "row_content": "<p>A faithfully restored digital reproduction of the historic Stratton Oakmont broker training manual, delivered as a clean, high-resolution PDF. Reproduced for educational and study purposes.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_bPDbP9": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How do I receive it?",
+            "icon": "check_mark",
+            "row_content": "<p>Instantly. After checkout you get an immediate download link. No shipping, no waiting. Read it on any device or print it for your team.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_DxjGCt": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Who is it for?",
+            "icon": "check_mark",
+            "row_content": "<p>Salespeople who want to close with more confidence, founders who sell their own product, and sales leaders looking for a timeless reference to train their team. No prior experience required.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_PqFbpD": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is this a get-rich-quick thing?",
+            "icon": "check_mark",
+            "row_content": "<p>No. This is a training document about the craft of selling: tonality, persuasion and control. A study of sales psychology, to be applied professionally and ethically. For training purposes only.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_GTWYft": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I need sales experience to use it?",
+            "icon": "check_mark",
+            "row_content": "<p>No. It's written to work on your very next call, whether you're brand new or a seasoned closer. Beginners get a step-by-step system; pros get sharper scripts and cleaner objection-handling.</p><p></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_WN39NY": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What format is it, and what can I read it on?",
+            "icon": "check_mark",
+            "row_content": "<p>A clean, high-resolution PDF. Read it on your phone, tablet or laptop, or print it for your desk and your team. Yours to keep forever.</p><p></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_n877DH": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Can I use it to train my whole team?",
+            "icon": "check_mark",
+            "row_content": "<p>Yes. It's built as a reference you can coach from: one proven playbook to bring every rep up to the level of your best one. It's licensed for you and your team's internal use, not for resale or redistribution.</p><p></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_bErgpX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is this affiliated with Jordan Belfort or the real Stratton Oakmont?",
+            "icon": "check_mark",
+            "row_content": "<p>No. This is an independently produced, faithfully restored reproduction of a historic training document, offered for educational and study purposes. It is not affiliated with, endorsed by, or sponsored by any person or company.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_MmLNxF": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What will I actually learn?",
+            "icon": "check_mark",
+            "row_content": "<p>The full closing system: cold-calling scripts, fast qualifying, objection-handling, tonality and control, and the Straight Line approach, the same fundamentals that ran a legendary sales floor.</p><p></p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_VpDkMJ": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What language is it in?",
+            "icon": "check_mark",
+            "row_content": "<p>Currently English. More languages are on the way.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_kJD9Ut",
+        "collapsible_row_bPDbP9",
+        "collapsible_row_DxjGCt",
+        "collapsible_row_PqFbpD",
+        "collapsible_row_GTWYft",
+        "collapsible_row_WN39NY",
+        "collapsible_row_n877DH",
+        "collapsible_row_bErgpX",
+        "collapsible_row_MmLNxF",
+        "collapsible_row_VpDkMJ"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "",
+        "heading": "<strong>Frequently Asked Questions</strong>",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "container_color_scheme": "",
+        "color_scheme": "",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 0,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_9WPdPE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BTycY4": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Become the closer everyone remembers</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_xQWGJp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The scripts change. The fundamentals don't. Add the legendary sales manual to your shelf and start leading every conversation like an elite closer.</p>"
+          }
+        },
+        "button_tpgWD8": {
+          "type": "button",
+          "settings": {
+            "button_label": "Get the Manual",
+            "button_link": "shopify://products/stratton-oakmont-training-manual-jordan-belfort",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_BTycY4",
+        "text_xQWGJp",
+        "button_tpgWD8"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "disclosures": {
+      "type": "disclosures",
+      "settings": {
+        "heading": "Disclosures",
+        "heading_size": "h2",
+        "open_by_default": false,
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "YOU MAY ALSO LIKE",
+        "heading_size": "h1",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 0,
+        "padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_RmBtHU",
+    "multirow_JMLaRP",
+    "collapsible_content_za6aM8",
+    "rich_text_9WPdPE",
+    "disclosures",
+    "related-products"
+  ]
+}

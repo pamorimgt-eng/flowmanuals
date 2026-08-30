@@ -1,34 +1,25 @@
 {% comment %}
   Scroll-reveal animation for the LP sections.
 
-  Deliberately uses a rAF-throttled scroll check rather than
-  IntersectionObserver. IO was observed silently never firing in some
-  environments, which would leave everything below the fold permanently
-  invisible — an unacceptable failure mode on a sales page. A scroll handler
-  over a shrinking list of pending elements is trivially cheap here (a few
-  dozen nodes) and cannot fail that way.
+  Design constraint learned the hard way: an earlier version hid everything
+  up front via an html class and revealed on scroll. When window.innerHeight
+  reported 0 (background tab, minimised window, prerender) the reveal
+  threshold collapsed to 0, nothing ever matched, and the whole storefront
+  rendered blank. So this version inverts the rule:
 
-  Three further guards, because hidden content is worse than no animation:
-    - the hidden state is scoped to html.fm-reveal-on, set by this inline
-      script, so no JS means no hiding (and no flash, since it lands during
-      parse);
-    - a watchdog reveals everything if the reveal loop never gets going;
-    - reveal() is also called on load/resize, not just scroll.
+    NOTHING is hidden by default. JS measures first and only hides elements
+    it has confirmed are BELOW the fold — which the visitor cannot see
+    anyway, so there is no flash and no possible blank page.
+
+  If measurement is unavailable or looks wrong, it simply does nothing and
+  the page renders as plain static content.
 
   Include once per page via {% render 'fm-reveal' %} (safe to render from
   several sections — the style is idempotent and the script self-guards).
 {% endcomment %}
 <style>
-  html.fm-reveal-on .fm-lp :is(
-    .fm-eyebrow, .fm-h1, .fm-h2, .fm-sub, .fm-cta-row, .fm-trust-mini,
-    .fm-badge-row, .flow-pay-secure, .flow-pay-list, .fm-hero-img,
-    .fm-story-img, .fm-bullets li, .fm-symptom-card, .fm-module, .fm-tier,
-    .fm-trust-item, .fm-guarantee, .fm-faq-item, .fm-disclaimer
-  ) {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  html.fm-reveal-on .fm-lp .fm-in {
+  .fm-lp .fm-pre { opacity: 0; transform: translateY(22px); }
+  .fm-lp .fm-in {
     opacity: 1;
     transform: none;
     transition: opacity .6s cubic-bezier(.22, .61, .36, 1),
@@ -36,16 +27,8 @@
     transition-delay: var(--fm-delay, 0ms);
   }
   @media (prefers-reduced-motion: reduce) {
-    html.fm-reveal-on .fm-lp :is(
-      .fm-eyebrow, .fm-h1, .fm-h2, .fm-sub, .fm-cta-row, .fm-trust-mini,
-      .fm-badge-row, .flow-pay-secure, .flow-pay-list, .fm-hero-img,
-      .fm-story-img, .fm-bullets li, .fm-symptom-card, .fm-module, .fm-tier,
-      .fm-trust-item, .fm-guarantee, .fm-faq-item, .fm-disclaimer
-    ) {
-      opacity: 1;
-      transform: none;
-    }
-    html.fm-reveal-on .fm-lp .fm-in { transition: none; }
+    .fm-lp .fm-pre { opacity: 1; transform: none; }
+    .fm-lp .fm-in { transition: none; }
   }
 </style>
 <script>
@@ -61,76 +44,80 @@
       '.fm-faq-item', '.fm-disclaimer'
     ].join(',');
 
-    var root = document.documentElement;
-    // Set during parse so the hide rule applies before anything paints.
-    root.classList.add('fm-reveal-on');
-
-    function revealAll() {
-      root.classList.remove('fm-reveal-on');
+    function viewportHeight() {
+      return window.innerHeight || document.documentElement.clientHeight || 0;
     }
 
-    // If init never runs, stop hiding rather than leave the page blank.
-    var watchdog = setTimeout(revealAll, 5000);
+    var pending = [];
+
+    function revealAll() {
+      for (var i = 0; i < pending.length; i++) pending[i].classList.remove('fm-pre');
+      pending = [];
+      teardown();
+    }
+
+    function check() {
+      var vh = viewportHeight();
+      // Can't measure the viewport: never leave anything hidden.
+      if (vh <= 0) { revealAll(); return; }
+
+      var limit = vh * 0.92;
+      var still = [];
+      for (var i = 0; i < pending.length; i++) {
+        var el = pending[i];
+        if (el.getBoundingClientRect().top < limit) {
+          el.classList.remove('fm-pre');
+          el.classList.add('fm-in');
+        } else {
+          still.push(el);
+        }
+      }
+      pending = still;
+      if (!pending.length) teardown();
+    }
+
+    var ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      var raf = window.requestAnimationFrame || function (f) { return setTimeout(f, 16); };
+      raf(function () { ticking = false; check(); });
+    }
+    function onVisible() { if (!document.hidden) check(); }
+
+    function teardown() {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('load', onScroll);
+      document.removeEventListener('visibilitychange', onVisible);
+    }
 
     function init() {
-      clearTimeout(watchdog);
+      var vh = viewportHeight();
+      // No reliable measurement -> no animation at all, page stays as-is.
+      if (vh <= 0) return;
 
-      var pending = [];
+      var limit = vh * 0.92;
       document.querySelectorAll('.fm-lp').forEach(function (lp) {
         lp.querySelectorAll(SELECTOR).forEach(function (el) {
-          // Stagger siblings that share a parent so rows and grids cascade.
+          // Only ever hide what is already off-screen, so nothing the
+          // visitor can see is affected and there is no flash.
+          if (el.getBoundingClientRect().top < limit) return;
           var parent = el.parentElement;
           var idx = parent.__fmCount || 0;
           parent.__fmCount = idx + 1;
           if (idx > 0) el.style.setProperty('--fm-delay', Math.min(idx * 70, 350) + 'ms');
+          el.classList.add('fm-pre');
           pending.push(el);
         });
       });
 
-      if (!pending.length) { revealAll(); return; }
-
-      var ticking = false;
-
-      function check() {
-        ticking = false;
-        var limit = window.innerHeight * 0.92;
-        var still = [];
-        for (var i = 0; i < pending.length; i++) {
-          var el = pending[i];
-          var top = el.getBoundingClientRect().top;
-          if (top < limit) {
-            el.classList.add('fm-in');
-          } else {
-            still.push(el);
-          }
-        }
-        pending = still;
-        if (!pending.length) teardown();
-      }
-
-      function onScroll() {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(check);
-      }
-
-      function teardown() {
-        window.removeEventListener('scroll', onScroll);
-        window.removeEventListener('resize', onScroll);
-        document.removeEventListener('visibilitychange', onVisible);
-      }
-
-      // A page opened in a background tab has rAF suspended, so the queued
-      // check never runs; re-check (synchronously) once it becomes visible.
-      function onVisible() {
-        if (!document.hidden) check();
-      }
+      if (!pending.length) return;
 
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', onScroll, { passive: true });
       window.addEventListener('load', onScroll);
       document.addEventListener('visibilitychange', onVisible);
-      check();
     }
 
     if (document.readyState === 'loading') {

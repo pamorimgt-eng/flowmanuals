@@ -1,6 +1,7 @@
 {% comment %} Reusable closing CTA + legal disclaimer block. {% endcomment %}
 <div class="fm-lp">
   {% render 'fm-styles' %}
+  {% render 'fm-reveal' %}
   {% render 'fm-buy-now' %}
   {% assign fm_variant_id = section.settings.variant_id %}
   {% assign fm_cart_link = '/cart/' | append: fm_variant_id | append: ':1' %}

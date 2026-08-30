@@ -1,0 +1,105 @@
+{% comment %}
+  Scroll-reveal animation for the LP sections.
+
+  The hidden state is scoped to html.fm-reveal-on, a class the inline script
+  below sets during parse — so with JS disabled (or if the script fails) the
+  rule never matches and all content stays visible. Because the class lands
+  before the sections paint, there is also no flash of content appearing and
+  then hiding. Honours prefers-reduced-motion.
+
+  Include once per page via {% render 'fm-reveal' %} (safe to render from
+  several sections — the style is idempotent and the script self-guards).
+{% endcomment %}
+<style>
+  html.fm-reveal-on .fm-lp :is(
+    .fm-eyebrow, .fm-h1, .fm-h2, .fm-sub, .fm-cta-row, .fm-trust-mini,
+    .fm-badge-row, .flow-pay-secure, .flow-pay-list, .fm-hero-img,
+    .fm-story-img, .fm-bullets li, .fm-symptom-card, .fm-module, .fm-tier,
+    .fm-trust-item, .fm-guarantee, .fm-faq-item, .fm-disclaimer
+  ) {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  html.fm-reveal-on .fm-lp .fm-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity .65s cubic-bezier(.22, .61, .36, 1),
+                transform .65s cubic-bezier(.22, .61, .36, 1);
+    transition-delay: var(--fm-delay, 0ms);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html.fm-reveal-on .fm-lp :is(
+      .fm-eyebrow, .fm-h1, .fm-h2, .fm-sub, .fm-cta-row, .fm-trust-mini,
+      .fm-badge-row, .flow-pay-secure, .flow-pay-list, .fm-hero-img,
+      .fm-story-img, .fm-bullets li, .fm-symptom-card, .fm-module, .fm-tier,
+      .fm-trust-item, .fm-guarantee, .fm-faq-item, .fm-disclaimer
+    ) {
+      opacity: 1;
+      transform: none;
+    }
+    html.fm-reveal-on .fm-lp .fm-in { transition: none; }
+  }
+</style>
+<script>
+  (function () {
+    if (window.__fmRevealInit) return;
+    window.__fmRevealInit = true;
+    if (!('IntersectionObserver' in window)) return;
+
+    var SELECTOR = [
+      '.fm-eyebrow', '.fm-h1', '.fm-h2', '.fm-sub', '.fm-cta-row',
+      '.fm-trust-mini', '.fm-badge-row', '.flow-pay-secure', '.flow-pay-list',
+      '.fm-hero-img', '.fm-story-img', '.fm-bullets li', '.fm-symptom-card',
+      '.fm-module', '.fm-tier', '.fm-trust-item', '.fm-guarantee',
+      '.fm-faq-item', '.fm-disclaimer'
+    ].join(',');
+
+    // Set during parse so the hide rule applies before anything paints.
+    document.documentElement.classList.add('fm-reveal-on');
+
+    // Safety net: if init never runs for any reason, drop the hide rule
+    // rather than leaving the page blank.
+    var safety = setTimeout(function () {
+      document.documentElement.classList.remove('fm-reveal-on');
+    }, 4000);
+
+    function init() {
+      clearTimeout(safety);
+
+      document.querySelectorAll('.fm-lp').forEach(function (lp) {
+        lp.querySelectorAll(SELECTOR).forEach(function (el) {
+          // Stagger siblings that share a parent so rows and grids cascade.
+          var parent = el.parentElement;
+          var idx = parent.__fmCount || 0;
+          parent.__fmCount = idx + 1;
+          if (idx > 0) el.style.setProperty('--fm-delay', Math.min(idx * 70, 350) + 'ms');
+        });
+      });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('fm-in');
+          io.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+      document.querySelectorAll('.fm-lp').forEach(function (lp) {
+        lp.querySelectorAll(SELECTOR).forEach(function (el) {
+          // Anything already on screen at load reveals immediately.
+          if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add('fm-in');
+          } else {
+            io.observe(el);
+          }
+        });
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

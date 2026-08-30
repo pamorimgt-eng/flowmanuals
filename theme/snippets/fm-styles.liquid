@@ -17,6 +17,9 @@
     background: var(--fm-white);
   }
   .fm-lp * { box-sizing: border-box; }
+  /* Never let a width/height attribute pair squash an image once the column
+     narrows on mobile — always fall back to the file's own aspect ratio. */
+  .fm-lp img { max-width: 100%; height: auto; }
   .fm-wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
   .fm-section { padding: 72px 0; }
   .fm-section--tight { padding: 40px 0; }
@@ -41,7 +44,7 @@
   .fm-hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 56px; align-items: center; }
   @media (max-width: 860px) { .fm-hero { grid-template-columns: 1fr; gap: 32px; } }
   .fm-hero-img { width: 100%; border-radius: 16px; overflow: hidden; background: var(--fm-cream); }
-  .fm-hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .fm-hero-img img { width: 100%; height: auto; display: block; }
 
   .fm-bullets { list-style: none; margin: 32px 0; padding: 0; display: grid; gap: 12px; }
   .fm-bullets li { display: flex; gap: 12px; font-size: 16px; line-height: 1.5; }
@@ -59,7 +62,7 @@
   .fm-story { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   @media (max-width: 860px) { .fm-story { grid-template-columns: 1fr; } }
   .fm-story-img { border-radius: 16px; overflow: hidden; }
-  .fm-story-img img { width: 100%; display: block; }
+  .fm-story-img img { width: 100%; height: auto; display: block; }
   .fm-story.fm-story--reverse .fm-story-img { order: 2; }
   @media (max-width: 860px) { .fm-story.fm-story--reverse .fm-story-img { order: 0; } }
 

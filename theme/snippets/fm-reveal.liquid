@@ -85,11 +85,13 @@
     }
     function onVisible() { if (!document.hidden) check(); }
 
+    var poll = null;
     function teardown() {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       window.removeEventListener('load', onScroll);
       document.removeEventListener('visibilitychange', onVisible);
+      if (poll) { clearInterval(poll); poll = null; }
     }
 
     function init() {
@@ -118,6 +120,11 @@
       window.addEventListener('resize', onScroll, { passive: true });
       window.addEventListener('load', onScroll);
       document.addEventListener('visibilitychange', onVisible);
+
+      // Belt and braces: if scroll events or rAF ever fail to fire, this
+      // still reveals each element as it comes into view. Costs a walk of a
+      // shrinking list once a second and stops itself when the list empties.
+      poll = setInterval(check, 1000);
     }
 
     if (document.readyState === 'loading') {

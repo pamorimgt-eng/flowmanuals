@@ -15,6 +15,7 @@
       <div class="fm-cta-row">
         <a href="{{ fm_cart_link }}" data-variant-id="{{ fm_variant_id }}" class="fm-cta fm-cta--lg fm-buy-now">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
       </div>
+      {% render 'fm-secure-checkout' %}
       <div class="fm-badge-row">
         <span class="fm-badge">Instant digital download</span>
         <span class="fm-badge">One-time payment</span>

@@ -11,6 +11,7 @@
       <div class="fm-cta-row">
         <a href="{{ section.settings.cta_link | default: fm_cart_link }}" data-variant-id="{{ fm_variant_id }}" class="fm-cta fm-cta--lg fm-buy-now">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
       </div>
+      {% render 'fm-secure-checkout' %}
       <p class="fm-disclaimer">{{ section.settings.disclaimer | default: "Flow Manuals is an independent publisher of historical sales-training material. This product is a restored digital copy of a training document from Stratton Oakmont, Inc. It is not affiliated with, endorsed by, or sponsored by Jordan Belfort or any successor entity, and is offered for educational and historical reference. Results depend on individual effort and application; this product does not guarantee specific sales outcomes." }}</p>
     </div>
   </div>

@@ -1,11 +1,19 @@
 {% comment %}
   Scroll-reveal animation for the LP sections.
 
-  The hidden state is scoped to html.fm-reveal-on, a class the inline script
-  below sets during parse — so with JS disabled (or if the script fails) the
-  rule never matches and all content stays visible. Because the class lands
-  before the sections paint, there is also no flash of content appearing and
-  then hiding. Honours prefers-reduced-motion.
+  Deliberately uses a rAF-throttled scroll check rather than
+  IntersectionObserver. IO was observed silently never firing in some
+  environments, which would leave everything below the fold permanently
+  invisible — an unacceptable failure mode on a sales page. A scroll handler
+  over a shrinking list of pending elements is trivially cheap here (a few
+  dozen nodes) and cannot fail that way.
+
+  Three further guards, because hidden content is worse than no animation:
+    - the hidden state is scoped to html.fm-reveal-on, set by this inline
+      script, so no JS means no hiding (and no flash, since it lands during
+      parse);
+    - a watchdog reveals everything if the reveal loop never gets going;
+    - reveal() is also called on load/resize, not just scroll.
 
   Include once per page via {% render 'fm-reveal' %} (safe to render from
   several sections — the style is idempotent and the script self-guards).
@@ -23,8 +31,8 @@
   html.fm-reveal-on .fm-lp .fm-in {
     opacity: 1;
     transform: none;
-    transition: opacity .65s cubic-bezier(.22, .61, .36, 1),
-                transform .65s cubic-bezier(.22, .61, .36, 1);
+    transition: opacity .6s cubic-bezier(.22, .61, .36, 1),
+                transform .6s cubic-bezier(.22, .61, .36, 1);
     transition-delay: var(--fm-delay, 0ms);
   }
   @media (prefers-reduced-motion: reduce) {
@@ -44,7 +52,6 @@
   (function () {
     if (window.__fmRevealInit) return;
     window.__fmRevealInit = true;
-    if (!('IntersectionObserver' in window)) return;
 
     var SELECTOR = [
       '.fm-eyebrow', '.fm-h1', '.fm-h2', '.fm-sub', '.fm-cta-row',
@@ -54,18 +61,21 @@
       '.fm-faq-item', '.fm-disclaimer'
     ].join(',');
 
+    var root = document.documentElement;
     // Set during parse so the hide rule applies before anything paints.
-    document.documentElement.classList.add('fm-reveal-on');
+    root.classList.add('fm-reveal-on');
 
-    // Safety net: if init never runs for any reason, drop the hide rule
-    // rather than leaving the page blank.
-    var safety = setTimeout(function () {
-      document.documentElement.classList.remove('fm-reveal-on');
-    }, 4000);
+    function revealAll() {
+      root.classList.remove('fm-reveal-on');
+    }
+
+    // If init never runs, stop hiding rather than leave the page blank.
+    var watchdog = setTimeout(revealAll, 5000);
 
     function init() {
-      clearTimeout(safety);
+      clearTimeout(watchdog);
 
+      var pending = [];
       document.querySelectorAll('.fm-lp').forEach(function (lp) {
         lp.querySelectorAll(SELECTOR).forEach(function (el) {
           // Stagger siblings that share a parent so rows and grids cascade.
@@ -73,27 +83,46 @@
           var idx = parent.__fmCount || 0;
           parent.__fmCount = idx + 1;
           if (idx > 0) el.style.setProperty('--fm-delay', Math.min(idx * 70, 350) + 'ms');
+          pending.push(el);
         });
       });
 
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('fm-in');
-          io.unobserve(entry.target);
-        });
-      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      if (!pending.length) { revealAll(); return; }
 
-      document.querySelectorAll('.fm-lp').forEach(function (lp) {
-        lp.querySelectorAll(SELECTOR).forEach(function (el) {
-          // Anything already on screen at load reveals immediately.
-          if (el.getBoundingClientRect().top < window.innerHeight) {
+      var ticking = false;
+
+      function check() {
+        ticking = false;
+        var limit = window.innerHeight * 0.92;
+        var still = [];
+        for (var i = 0; i < pending.length; i++) {
+          var el = pending[i];
+          var top = el.getBoundingClientRect().top;
+          if (top < limit) {
             el.classList.add('fm-in');
           } else {
-            io.observe(el);
+            still.push(el);
           }
-        });
-      });
+        }
+        pending = still;
+        if (!pending.length) teardown();
+      }
+
+      function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(check);
+      }
+
+      function teardown() {
+        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('resize', onScroll);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      window.addEventListener('load', onScroll);
+      check();
     }
 
     if (document.readyState === 'loading') {

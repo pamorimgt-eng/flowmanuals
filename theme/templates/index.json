@@ -1,0 +1,46 @@
+{
+  "sections": {
+    "main": {
+      "type": "lp-stratton-manual",
+      "settings": {
+        "pricing_headline": "Get Your Copy",
+        "pricing_subheadline": "One-time payment. Instant download. No subscription, ever."
+      },
+      "blocks": {
+        "bullet-1": { "type": "bullet", "settings": { "text": "A field-tested closing framework, not recycled theory from a business degree" } },
+        "bullet-2": { "type": "bullet", "settings": { "text": "Turns objections into buying signals instead of dead ends" } },
+        "bullet-3": { "type": "bullet", "settings": { "text": "Works for calls, DMs, and in-person — cold or warm, one flow" } },
+        "bullet-4": { "type": "bullet", "settings": { "text": "Kills the awkward \"trying to sell\" feeling so conversations feel natural again" } },
+        "bullet-5": { "type": "bullet", "settings": { "text": "Restored from real trading-floor training, not a corporate script" } },
+        "bullet-6": { "type": "bullet", "settings": { "text": "30-day guarantee — read it, use it, or get your money back" } },
+
+        "symptom-1": { "type": "symptom", "settings": { "title": "You lose control of the conversation", "body": "The prospect steers, you react, and by the time you try to close, the moment's gone." } },
+        "symptom-2": { "type": "symptom", "settings": { "title": "You over-explain instead of asking", "body": "You talk more when you're nervous, which buries your offer under noise." } },
+        "symptom-3": { "type": "symptom", "settings": { "title": "You freeze on objections", "body": "\"I need to think about it\" ends the call instead of opening the real conversation." } },
+
+        "module-1": { "type": "module", "settings": { "number": "Module 1", "title": "The Qualifying Call", "body": "The word-for-word opening used to qualify a prospect and set the frame in under 60 seconds." } },
+        "module-2": { "type": "module", "settings": { "number": "Module 2", "title": "The Objection Rebuttal Library", "body": "Scripted responses to money, timing, \"I need to think about it,\" and the brush-off." } },
+        "module-3": { "type": "module", "settings": { "number": "Module 3", "title": "The Closing Sequence", "body": "How the floor moved a qualified prospect from interest to a firm yes." } },
+        "module-4": { "type": "module", "settings": { "number": "Module 4", "title": "Certification & Training Notes", "body": "The internal notes new hires were actually drilled on before taking live calls." } },
+
+        "tier-1": { "type": "tier", "settings": { "title": "Stratton Oakmont Training Manual", "anchor_price": "€39,99", "offer_price": "€17,52", "featured": false, "features": "Full restored, searchable PDF\nInstant digital download\nLifetime access to your copy", "buy_link": "/products/stratton-oakmont-training-manual-jordan-belfort", "cta_text": "Get The Manual Now" } },
+
+        "faq-1": { "type": "faq_item", "settings": { "question": "Is this really the original manual?", "answer": "It's a restored, cleaned-up digital copy sourced from an original training document. Pages are presented as-is, for historical and educational reference." } },
+        "faq-2": { "type": "faq_item", "settings": { "question": "Can't I just find a free scan online?", "answer": "You might find low-quality, incomplete scans. Ours is cleaned up, fully legible, and organized so you can actually study and use it." } },
+        "faq-3": { "type": "faq_item", "settings": { "question": "It's from the 1990s. Isn't it outdated?", "answer": "The channels have changed — calls, DMs, video. The underlying structure of how people move from curious to committed hasn't." } },
+        "faq-4": { "type": "faq_item", "settings": { "question": "Will it work in my industry?", "answer": "The sequence is industry-agnostic: qualify, handle the real objection, close. You adapt the words, not the structure." } },
+        "faq-5": { "type": "faq_item", "settings": { "question": "I don't do cold calls. Is this still relevant?", "answer": "Yes — the same objection-handling and closing sequence applies to DMs, discovery calls, and in-person conversations." } },
+        "faq-6": { "type": "faq_item", "settings": { "question": "How do I get it, and in what format?", "answer": "Instant digital delivery as a PDF by email right after checkout. Readable on phone, tablet, or computer." } },
+        "faq-7": { "type": "faq_item", "settings": { "question": "Is this a get-rich-quick program?", "answer": "No. It's a sales-training document. Results depend on your own effort and how you apply it — we don't promise specific income or outcomes." } }
+      },
+      "block_order": [
+        "bullet-1", "bullet-2", "bullet-3", "bullet-4", "bullet-5", "bullet-6",
+        "symptom-1", "symptom-2", "symptom-3",
+        "module-1", "module-2", "module-3", "module-4",
+        "tier-1",
+        "faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6", "faq-7"
+      ]
+    }
+  },
+  "order": ["main"]
+}

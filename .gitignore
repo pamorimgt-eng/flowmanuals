@@ -1,0 +1,6 @@
+pdf_pages/
+ideias_extracted.txt
+.DS_Store
+Thumbs.db
+node_modules/
+*.log

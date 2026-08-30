@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "main": {
+      "type": "lp-stratton-manual"
+    }
+  },
+  "order": ["main"]
+}

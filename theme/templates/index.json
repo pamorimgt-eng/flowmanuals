@@ -4,7 +4,10 @@
       "type": "lp-stratton-manual",
       "settings": {
         "pricing_headline": "Get Your Copy",
-        "pricing_subheadline": "One-time payment. Instant download. No subscription, ever."
+        "pricing_subheadline": "One-time payment. Instant download. No subscription, ever.",
+        "hero_image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort.webp",
+        "about_image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-3.webp",
+        "mechanism_image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-4.webp"
       },
       "blocks": {
         "bullet-1": { "type": "bullet", "settings": { "text": "A field-tested closing framework, not recycled theory from a business degree" } },

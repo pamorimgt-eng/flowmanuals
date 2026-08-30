@@ -1,0 +1,28 @@
+{% comment %} Reusable guarantee block. {% endcomment %}
+<div class="fm-lp">
+  {% render 'fm-styles' %}
+  <div class="fm-section">
+    <div class="fm-wrap">
+      <div class="fm-guarantee">
+        <div class="fm-guarantee-badge">{{ section.settings.badge_text | default: "30 Day
+Guarantee" | newline_to_br }}</div>
+        <div>
+          <h2 class="fm-h2">{{ section.settings.headline | default: 'The "Read It, Use It, Or Get It Back" Guarantee' }}</h2>
+          <p>{{ section.settings.body | default: "Read the manual. Use one technique in one real conversation within 30 days. If it doesn't help, email us for a full refund — no forms, no hoops." }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LP guarantee",
+  "settings": [
+    { "type": "text", "id": "badge_text", "label": "Badge text (use \\n for line break)" },
+    { "type": "text", "id": "headline", "label": "Headline" },
+    { "type": "textarea", "id": "body", "label": "Body" }
+  ],
+  "presets": [{ "name": "LP guarantee" }]
+}
+{% endschema %}

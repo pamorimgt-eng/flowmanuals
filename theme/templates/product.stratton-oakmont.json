@@ -1,5 +1,9 @@
 {
   "sections": {
+    "product_lp_hero": {
+      "type": "product-lp-hero",
+      "settings": {}
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -129,6 +133,10 @@
         "padding_bottom": 12
       }
     },
+    "lp_pattern_interrupt": {
+      "type": "lp-pattern-interrupt",
+      "settings": {}
+    },
     "rich_text_RmBtHU": {
       "type": "rich-text",
       "blocks": {
@@ -219,6 +227,10 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "lp_guarantee": {
+      "type": "lp-guarantee",
+      "settings": {}
     },
     "collapsible_content_za6aM8": {
       "type": "collapsible-content",
@@ -342,48 +354,9 @@
         "padding_bottom": 36
       }
     },
-    "rich_text_9WPdPE": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_BTycY4": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>Become the closer everyone remembers</strong>",
-            "heading_size": "h1"
-          }
-        },
-        "text_xQWGJp": {
-          "type": "text",
-          "settings": {
-            "text": "<p>The scripts change. The fundamentals don't. Add the legendary sales manual to your shelf and start leading every conversation like an elite closer.</p>"
-          }
-        },
-        "button_tpgWD8": {
-          "type": "button",
-          "settings": {
-            "button_label": "Get the Manual",
-            "button_link": "shopify://products/stratton-oakmont-training-manual-jordan-belfort",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_BTycY4",
-        "text_xQWGJp",
-        "button_tpgWD8"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
-      }
+    "lp_final_cta": {
+      "type": "lp-final-cta",
+      "settings": {}
     },
     "disclosures": {
       "type": "disclosures",
@@ -416,11 +389,14 @@
     }
   },
   "order": [
+    "product_lp_hero",
     "main",
+    "lp_pattern_interrupt",
     "rich_text_RmBtHU",
     "multirow_JMLaRP",
+    "lp_guarantee",
     "collapsible_content_za6aM8",
-    "rich_text_9WPdPE",
+    "lp_final_cta",
     "disclosures",
     "related-products"
   ]

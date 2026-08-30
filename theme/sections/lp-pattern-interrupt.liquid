@@ -1,0 +1,23 @@
+{% comment %} Reusable "attention" pattern-interrupt panel. {% endcomment %}
+<div class="fm-lp">
+  {% render 'fm-styles' %}
+  <div class="fm-section">
+    <div class="fm-wrap fm-panel fm-center">
+      <span class="fm-eyebrow">{{ section.settings.eyebrow | default: "Attention" }}</span>
+      <h2 class="fm-h2">{{ section.settings.headline | default: 'If "let me think about it" has ever ended a sale you should have closed — this is for you.' }}</h2>
+      <p class="fm-sub" style="margin-left:auto;margin-right:auto;">{{ section.settings.body | default: "Closing was never about charisma. It's about sequence — the right thing, in the right order, at the right moment. Most people never learn the sequence, so they wing it and lose deals they should have won." }}</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LP pattern interrupt",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "headline", "label": "Headline" },
+    { "type": "textarea", "id": "body", "label": "Body" }
+  ],
+  "presets": [{ "name": "LP pattern interrupt" }]
+}
+{% endschema %}

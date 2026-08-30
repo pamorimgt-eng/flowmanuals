@@ -130,4 +130,24 @@
     display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700;
     background: var(--fm-cream); border: 1px solid var(--fm-border); border-radius: 999px; padding: 7px 14px;
   }
+
+  /* Desktop padding/gaps between stacked blocks read as generous; on a
+     single mobile column they compound (72px + 72px between two sections,
+     plus a 56px grid gap that's now a vertical gap) into dead space that
+     makes the page feel empty instead of premium. Tighten everything that
+     stacks vertically once we're down to one column. */
+  @media (max-width: 640px) {
+    .fm-section { padding: 40px 0; }
+    .fm-section--tight { padding: 24px 0; }
+    .fm-hero { gap: 28px; }
+    .fm-story { gap: 24px; }
+    .fm-h1 { margin-bottom: 14px; }
+    .fm-h2 { margin-bottom: 12px; }
+    .fm-sub { margin-bottom: 20px; }
+    .fm-bullets { margin: 20px 0; gap: 10px; }
+    .fm-symptoms, .fm-modules, .fm-pricing, .fm-trust-grid { margin-top: 20px; }
+    .fm-panel { padding: 28px 20px; }
+    .fm-guarantee { padding: 28px 22px; gap: 18px; }
+    .fm-faq { margin-top: 18px; }
+  }
 </style>

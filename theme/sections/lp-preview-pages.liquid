@@ -1,0 +1,69 @@
+{% comment %}
+  "Look inside" demo: shows real photographed pages from the manual so a
+  buyer can judge the actual content and quality before purchasing —
+  distinct from the marketing hero/story images used elsewhere.
+{% endcomment %}
+<div class="fm-lp">
+  {% render 'fm-styles' %}
+  {% render 'fm-reveal' %}
+  <div class="fm-section" id="preview">
+    <div class="fm-wrap">
+      <div class="fm-center" style="max-width:700px;margin:0 auto;">
+        <span class="fm-eyebrow">{{ section.settings.eyebrow | default: "No filters, no mockups" }}</span>
+        <h2 class="fm-h2">{{ section.settings.headline | default: "Look Inside — Real Pages From The Manual" }}</h2>
+        <p class="fm-sub" style="margin-left:auto;margin-right:auto;">{{ section.settings.subheadline | default: "Three actual pages, exactly as they're delivered in the PDF. What you see here is what you get." }}</p>
+      </div>
+      <div class="fm-preview-grid">
+        {% for block in section.blocks %}
+          {% if block.type == "preview_page" %}
+            <figure class="fm-preview-item"{{ block.shopify_attributes }}>
+              {% if block.settings.image %}
+                <img
+                  src="{{ block.settings.image | image_url: width: 700 }}"
+                  alt="{{ block.settings.caption | default: 'Manual page preview' | escape }}"
+                  loading="lazy"
+                  width="700"
+                  height="{{ 700 | divided_by: block.settings.image.aspect_ratio | round }}"
+                >
+              {% endif %}
+              {% if block.settings.caption != blank %}
+                <figcaption>{{ block.settings.caption }}</figcaption>
+              {% endif %}
+            </figure>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "LP preview pages",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "headline", "label": "Headline" },
+    { "type": "textarea", "id": "subheadline", "label": "Subheadline" }
+  ],
+  "blocks": [
+    {
+      "type": "preview_page",
+      "name": "Preview page",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Page photo" },
+        { "type": "text", "id": "caption", "label": "Caption" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "LP preview pages",
+      "blocks": [
+        { "type": "preview_page" },
+        { "type": "preview_page" },
+        { "type": "preview_page" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -44,7 +44,16 @@
         "tier-1",
         "faq-1", "faq-2", "faq-3", "faq-4", "faq-5", "faq-6", "faq-7"
       ]
+    },
+    "preview_pages": {
+      "type": "lp-preview-pages",
+      "blocks": {
+        "preview-1": { "type": "preview_page", "settings": { "image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-3.webp", "caption": "The qualifying call script" } },
+        "preview-2": { "type": "preview_page", "settings": { "image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-4.webp", "caption": "The Straight Line call structure" } },
+        "preview-3": { "type": "preview_page", "settings": { "image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-6.webp", "caption": "The objection rebuttal library" } }
+      },
+      "block_order": ["preview-1", "preview-2", "preview-3"]
     }
   },
-  "order": ["main"]
+  "order": ["main", "preview_pages"]
 }

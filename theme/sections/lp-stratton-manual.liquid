@@ -6,6 +6,9 @@
 
 <div class="fm-lp" id="shopify-section-{{ section.id }}">
   {% render 'fm-styles' %}
+  {% render 'fm-buy-now' %}
+  {% assign fm_variant_id = section.settings.variant_id %}
+  {% assign fm_cart_link = '/cart/' | append: fm_variant_id | append: ':1' %}
 
   {% comment %} ============ HERO ============ {% endcomment %}
   <div class="fm-section">
@@ -15,7 +18,7 @@
         <h1 class="fm-h1">{{ section.settings.headline | default: "Sell Better Than The Algorithm." }}</h1>
         <p class="fm-sub">{{ section.settings.subheadline | default: "In an age of AI-written pitches that all sound the same, the edge belongs to people who master real, human persuasion. This is the restored Stratton Oakmont training manual — the sales training that became a legend." }}</p>
         <div class="fm-cta-row">
-          <a href="{{ section.settings.cta_link | default: '#pricing' }}" class="fm-cta fm-cta--lg">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
+          <a href="{{ fm_cart_link }}" data-variant-id="{{ fm_variant_id }}" class="fm-cta fm-cta--lg fm-buy-now">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
         </div>
         <p class="fm-trust-mini">Instant digital download · One-time payment · 30-day guarantee</p>
       </div>
@@ -153,7 +156,8 @@
                   {% if item != blank %}<li>{{ item | strip }}</li>{% endif %}
                 {% endfor %}
               </ul>
-              <a href="{{ block.settings.buy_link | default: '#' }}" class="fm-cta">{{ block.settings.cta_text | default: "Get This Package" }}</a>
+              {% assign tier_variant_id = block.settings.variant_id | default: fm_variant_id %}
+              <a href="{{ block.settings.buy_link | default: fm_cart_link }}" data-variant-id="{{ tier_variant_id }}" class="fm-cta fm-buy-now">{{ block.settings.cta_text | default: "Get This Package" }}</a>
             </div>
           {% endif %}
         {% endfor %}
@@ -211,7 +215,7 @@
       <h2 class="fm-h2">{{ section.settings.final_headline | default: "Every Great Sales Floor Ran On A Manual." }}</h2>
       <p class="fm-sub" style="margin-left:auto;margin-right:auto;">{{ section.settings.final_body | default: "Not on talent, not on motivation — on a documented system, drilled until it was second nature. That system is restored, page for page, and ready to download. The next call you take could be the first one you run with it." }}</p>
       <div class="fm-cta-row">
-        <a href="{{ section.settings.cta_link | default: '#pricing' }}" class="fm-cta fm-cta--lg">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
+        <a href="{{ fm_cart_link }}" data-variant-id="{{ fm_variant_id }}" class="fm-cta fm-cta--lg fm-buy-now">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
       </div>
       <p class="fm-disclaimer">{{ section.settings.disclaimer | default: "Flow Manuals is an independent publisher of historical sales-training material. This product is a restored digital copy of a training document from Stratton Oakmont, Inc. It is not affiliated with, endorsed by, or sponsored by Jordan Belfort or any successor entity, and is offered for educational and historical reference. Results depend on individual effort and application; this product does not guarantee specific sales outcomes." }}</p>
     </div>
@@ -222,6 +226,9 @@
 {
   "name": "Flow Manual — LP",
   "settings": [
+    { "type": "header", "content": "Buy button" },
+    { "type": "text", "id": "variant_id", "label": "Default variant ID for all buy buttons", "info": "Numeric Shopify variant ID, e.g. 54043984626002" },
+
     { "type": "header", "content": "Hero" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
     { "type": "text", "id": "headline", "label": "Headline" },
@@ -295,7 +302,8 @@
         { "type": "text", "id": "offer_price", "label": "Offer price" },
         { "type": "checkbox", "id": "featured", "label": "Highlight as most popular" },
         { "type": "textarea", "id": "features", "label": "Features (one per line)" },
-        { "type": "url", "id": "buy_link", "label": "Buy link (variant add-to-cart or checkout URL)" },
+        { "type": "url", "id": "buy_link", "label": "Buy link override (optional, falls back to cart permalink)" },
+        { "type": "text", "id": "variant_id", "label": "Variant ID override (optional, falls back to section default)" },
         { "type": "text", "id": "cta_text", "label": "CTA text", "default": "Get This Package" }
       ]
     },

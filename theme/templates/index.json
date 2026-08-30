@@ -3,6 +3,7 @@
     "main": {
       "type": "lp-stratton-manual",
       "settings": {
+        "variant_id": "54043984626002",
         "pricing_headline": "Get Your Copy",
         "pricing_subheadline": "One-time payment. Instant download. No subscription, ever.",
         "hero_image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort.webp",
@@ -26,7 +27,7 @@
         "module-3": { "type": "module", "settings": { "number": "Module 3", "title": "The Closing Sequence", "body": "How the floor moved a qualified prospect from interest to a firm yes." } },
         "module-4": { "type": "module", "settings": { "number": "Module 4", "title": "Certification & Training Notes", "body": "The internal notes new hires were actually drilled on before taking live calls." } },
 
-        "tier-1": { "type": "tier", "settings": { "title": "Stratton Oakmont Training Manual", "anchor_price": "€39,99", "offer_price": "€17,52", "featured": false, "features": "Full restored, searchable PDF\nInstant digital download\nLifetime access to your copy", "buy_link": "/products/stratton-oakmont-training-manual-jordan-belfort", "cta_text": "Get The Manual Now" } },
+        "tier-1": { "type": "tier", "settings": { "title": "Stratton Oakmont Training Manual", "anchor_price": "€39,99", "offer_price": "€17,52", "featured": false, "features": "Full restored, searchable PDF\nInstant digital download\nLifetime access to your copy", "cta_text": "Get The Manual Now" } },
 
         "faq-1": { "type": "faq_item", "settings": { "question": "Is this really the original manual?", "answer": "It's a restored, cleaned-up digital copy sourced from an original training document. Pages are presented as-is, for historical and educational reference." } },
         "faq-2": { "type": "faq_item", "settings": { "question": "Can't I just find a free scan online?", "answer": "You might find low-quality, incomplete scans. Ours is cleaned up, fully legible, and organized so you can actually study and use it." } },

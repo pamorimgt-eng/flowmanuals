@@ -2,7 +2,9 @@
   "sections": {
     "product_lp_hero": {
       "type": "product-lp-hero",
-      "settings": {}
+      "settings": {
+        "variant_id": "54043984626002"
+      }
     },
     "main": {
       "type": "main-product",
@@ -356,7 +358,9 @@
     },
     "lp_final_cta": {
       "type": "lp-final-cta",
-      "settings": {}
+      "settings": {
+        "variant_id": "54043984626002"
+      }
     },
     "disclosures": {
       "type": "disclosures",

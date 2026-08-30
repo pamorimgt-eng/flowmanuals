@@ -1,12 +1,15 @@
 {% comment %} Reusable closing CTA + legal disclaimer block. {% endcomment %}
 <div class="fm-lp">
   {% render 'fm-styles' %}
+  {% render 'fm-buy-now' %}
+  {% assign fm_variant_id = section.settings.variant_id %}
+  {% assign fm_cart_link = '/cart/' | append: fm_variant_id | append: ':1' %}
   <div class="fm-section">
     <div class="fm-wrap fm-center">
       <h2 class="fm-h2">{{ section.settings.headline | default: "Every Great Sales Floor Ran On A Manual." }}</h2>
       <p class="fm-sub" style="margin-left:auto;margin-right:auto;">{{ section.settings.body | default: "Not on talent, not on motivation — on a documented system, drilled until it was second nature. That system is restored, page for page, and ready to download." }}</p>
       <div class="fm-cta-row">
-        <a href="{{ section.settings.cta_link | default: '#shopify-section-main' }}" class="fm-cta fm-cta--lg">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
+        <a href="{{ section.settings.cta_link | default: fm_cart_link }}" data-variant-id="{{ fm_variant_id }}" class="fm-cta fm-cta--lg fm-buy-now">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
       </div>
       <p class="fm-disclaimer">{{ section.settings.disclaimer | default: "Flow Manuals is an independent publisher of historical sales-training material. This product is a restored digital copy of a training document from Stratton Oakmont, Inc. It is not affiliated with, endorsed by, or sponsored by Jordan Belfort or any successor entity, and is offered for educational and historical reference. Results depend on individual effort and application; this product does not guarantee specific sales outcomes." }}</p>
     </div>
@@ -17,6 +20,7 @@
 {
   "name": "LP final CTA",
   "settings": [
+    { "type": "text", "id": "variant_id", "label": "Variant ID for buy button", "info": "Numeric Shopify variant ID, e.g. 54043984626002" },
     { "type": "text", "id": "headline", "label": "Headline" },
     { "type": "textarea", "id": "body", "label": "Body" },
     { "type": "url", "id": "cta_link", "label": "CTA link" },

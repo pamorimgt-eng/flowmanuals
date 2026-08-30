@@ -1,0 +1,35 @@
+{% comment %}
+  Turns any element with class="fm-buy-now" and data-variant-id="..." into a
+  one-click add-to-cart + straight-to-checkout button. Falls back to a plain
+  cart permalink (works with JS disabled) via the element's href.
+  Include once per page via {% render 'fm-buy-now' %}.
+{% endcomment %}
+<script>
+  (function () {
+    if (window.__fmBuyNowBound) return;
+    window.__fmBuyNowBound = true;
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('.fm-buy-now');
+      if (!el) return;
+      var variantId = el.getAttribute('data-variant-id');
+      if (!variantId) return;
+      e.preventDefault();
+      el.classList.add('fm-buy-now--loading');
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ items: [{ id: parseInt(variantId, 10), quantity: 1 }] })
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('add to cart failed');
+          window.location.href = '/checkout';
+        })
+        .catch(function () {
+          window.location.href = el.getAttribute('href') || '/cart/' + variantId + ':1';
+        });
+    });
+  })();
+</script>
+<style>
+  .fm-buy-now--loading { opacity: .7; pointer-events: none; }
+</style>

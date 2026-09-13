@@ -20,7 +20,7 @@
           <a href="{{ fm_cart_link }}" data-variant-id="{{ fm_variant_id }}" class="fm-cta fm-cta--lg fm-buy-now">{{ section.settings.cta_text | default: "Get The Manual Now" }}</a>
         </div>
         {% render 'fm-secure-checkout' %}
-        <p class="fm-trust-mini">Instant digital download · One-time payment · 30-day guarantee</p>
+        <p class="fm-trust-mini">Instant digital download · One-time payment · 7-day guarantee</p>
       </div>
       <div class="fm-hero-img">
         {% if section.settings.hero_image %}
@@ -187,8 +187,15 @@
         <div class="fm-trust-item">Instant Digital Access</div>
         <div class="fm-trust-item">Secure Checkout</div>
         <div class="fm-trust-item">One-Time Payment</div>
-        <div class="fm-trust-item">30-Day Guarantee</div>
+        <div class="fm-trust-item">7-Day Guarantee</div>
       </div>
+    </div>
+  </div>
+
+  {% comment %} ============ WHO WE ARE ============ {% endcomment %}
+  <div class="fm-section fm-section--tight">
+    <div class="fm-wrap fm-center" style="max-width:640px;margin:0 auto;">
+      <p class="fm-sub" style="margin-left:auto;margin-right:auto;">{{ section.settings.who_we_are | default: "Flow Manuals restores real historical sales-training documents into clean, searchable PDFs — starting with this one. No AI-rewritten fluff, no invented backstory: just the original material, cleaned up." }} <a href="/pages/about">Read the full story →</a></p>
     </div>
   </div>
 
@@ -196,10 +203,10 @@
   <div class="fm-section">
     <div class="fm-wrap">
       <div class="fm-guarantee">
-        <div class="fm-guarantee-badge">30 Day<br>Guarantee</div>
+        <div class="fm-guarantee-badge">7 Day<br>Guarantee</div>
         <div>
           <h2 class="fm-h2">{{ section.settings.guarantee_headline | default: 'The "Read It, Use It, Or Get It Back" Guarantee' }}</h2>
-          <p>{{ section.settings.guarantee_body | default: "Read the manual. Use one technique in one real conversation within 30 days. If it doesn't help, email us for a full refund — no forms, no hoops." }}</p>
+          <p>{{ section.settings.guarantee_body | default: "Read the manual. Use one technique in one real conversation within 7 days. If it doesn't help, email us for a full refund — no forms, no hoops." }}</p>
         </div>
       </div>
     </div>
@@ -279,6 +286,9 @@
     { "type": "text", "id": "pricing_headline", "label": "Headline" },
     { "type": "textarea", "id": "pricing_subheadline", "label": "Subheadline" },
 
+    { "type": "header", "content": "Who we are" },
+    { "type": "textarea", "id": "who_we_are", "label": "Short mission statement (links to /pages/about)" },
+
     { "type": "header", "content": "Guarantee" },
     { "type": "text", "id": "guarantee_headline", "label": "Headline" },
     { "type": "textarea", "id": "guarantee_body", "label": "Body" },
@@ -343,7 +353,7 @@
         { "type": "bullet", "settings": { "text": "Works for calls, DMs, and in-person — cold or warm, one flow" } },
         { "type": "bullet", "settings": { "text": "Kills the awkward \"trying to sell\" feeling so conversations feel natural again" } },
         { "type": "bullet", "settings": { "text": "Restored from real trading-floor training, not a corporate script" } },
-        { "type": "bullet", "settings": { "text": "30-day guarantee — read it, use it, or get your money back" } },
+        { "type": "bullet", "settings": { "text": "7-day guarantee — read it, use it, or get your money back" } },
 
         { "type": "symptom", "settings": { "title": "You lose control of the conversation", "body": "The prospect leads, you follow, and by the time you try to steer back, the moment to close is already gone." } },
         { "type": "symptom", "settings": { "title": "You over-explain instead of asking", "body": "Nerves turn into a monologue — and somewhere in all that talking, your actual offer gets buried." } },

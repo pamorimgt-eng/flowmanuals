@@ -28,7 +28,7 @@
             src="{{ section.settings.hero_image | image_url: width: 900 }}"
             srcset="{{ section.settings.hero_image | image_url: width: 500 }} 500w, {{ section.settings.hero_image | image_url: width: 700 }} 700w, {{ section.settings.hero_image | image_url: width: 900 }} 900w, {{ section.settings.hero_image | image_url: width: 1200 }} 1200w"
             sizes="(max-width: 860px) 100vw, 550px"
-            alt="{{ section.settings.headline | escape }}"
+            alt="{{ section.settings.headline | default: 'Sell Better Than The Algorithm.' | escape }}"
             loading="eager"
             fetchpriority="high"
             width="900"

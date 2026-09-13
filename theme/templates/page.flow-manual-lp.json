@@ -5,7 +5,7 @@
       "settings": {
         "variant_id": "54043984626002",
         "pricing_headline": "Get Your Copy",
-        "pricing_subheadline": "One-time payment. Instant download. No subscription, ever.",
+        "pricing_subheadline": "One-time payment. Instant download. No subscription, ever. Less than the cost of one hour with a sales coach — yours to reread as many times as you need.",
         "hero_image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort.webp",
         "about_image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-3.webp",
         "mechanism_image": "shopify://shop_images/stratton-oakmont-training-manual-jordan-belfort-4.webp"
@@ -18,9 +18,9 @@
         "bullet-5": { "type": "bullet", "settings": { "text": "Restored from real trading-floor training, not a corporate script" } },
         "bullet-6": { "type": "bullet", "settings": { "text": "30-day guarantee — read it, use it, or get your money back" } },
 
-        "symptom-1": { "type": "symptom", "settings": { "title": "You lose control of the conversation", "body": "The prospect steers, you react, and by the time you try to close, the moment's gone." } },
-        "symptom-2": { "type": "symptom", "settings": { "title": "You over-explain instead of asking", "body": "You talk more when you're nervous, which buries your offer under noise." } },
-        "symptom-3": { "type": "symptom", "settings": { "title": "You freeze on objections", "body": "\"I need to think about it\" ends the call instead of opening the real conversation." } },
+        "symptom-1": { "type": "symptom", "settings": { "title": "You lose control of the conversation", "body": "The prospect leads, you follow, and by the time you try to steer back, the moment to close is already gone." } },
+        "symptom-2": { "type": "symptom", "settings": { "title": "You over-explain instead of asking", "body": "Nerves turn into a monologue — and somewhere in all that talking, your actual offer gets buried." } },
+        "symptom-3": { "type": "symptom", "settings": { "title": "You freeze on objections", "body": "\"I need to think about it\" ends the call cold, because you never learned what to say next." } },
 
         "module-1": { "type": "module", "settings": { "number": "Module 1", "title": "The Qualifying Call", "body": "The word-for-word opening used to qualify a prospect and set the frame in under 60 seconds." } },
         "module-2": { "type": "module", "settings": { "number": "Module 2", "title": "The Objection Rebuttal Library", "body": "Scripted responses to money, timing, \"I need to think about it,\" and the brush-off." } },

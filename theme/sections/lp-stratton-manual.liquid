@@ -88,6 +88,7 @@
   <div class="fm-section">
     <div class="fm-wrap">
       <div class="fm-center" style="max-width:700px;margin:0 auto;">
+        <span class="fm-eyebrow">{{ section.settings.problem_eyebrow | default: "Inconsistent results. Deals that stall for no reason. Winging every objection and hoping." }}</span>
         <h2 class="fm-h2">{{ section.settings.problem_headline | default: "Most People Who Struggle To Sell Have One Invisible Problem: Conversation Drift" }}</h2>
       </div>
       <div class="fm-symptoms">
@@ -109,6 +110,7 @@
       <div>
         <h2 class="fm-h2">{{ section.settings.mechanism_headline | default: "The Straight Line — One Structure, Every Call" }}</h2>
         <p class="fm-sub">{{ section.settings.mechanism_body | default: "One repeatable structure that carries a conversation from open to close, so you run the same winning process every time — instead of reinventing it and hoping." }}</p>
+        <p class="fm-sub">{{ section.settings.mechanism_lightbulb | default: "The first time you see it laid out end to end, it's like someone finally turned the lights on in a room you'd been selling in the dark." }}</p>
       </div>
       <div class="fm-story-img">
         {% if section.settings.mechanism_image %}
@@ -261,11 +263,13 @@
     { "type": "image_picker", "id": "about_image", "label": "Image" },
 
     { "type": "header", "content": "Problem agitation" },
+    { "type": "text", "id": "problem_eyebrow", "label": "Eyebrow (problem stack)" },
     { "type": "text", "id": "problem_headline", "label": "Headline" },
 
     { "type": "header", "content": "Mechanism" },
     { "type": "text", "id": "mechanism_headline", "label": "Headline" },
     { "type": "textarea", "id": "mechanism_body", "label": "Body" },
+    { "type": "textarea", "id": "mechanism_lightbulb", "label": "\"Lightbulb moment\" line" },
     { "type": "image_picker", "id": "mechanism_image", "label": "Image" },
 
     { "type": "header", "content": "What's inside" },
@@ -341,9 +345,9 @@
         { "type": "bullet", "settings": { "text": "Restored from real trading-floor training, not a corporate script" } },
         { "type": "bullet", "settings": { "text": "30-day guarantee — read it, use it, or get your money back" } },
 
-        { "type": "symptom", "settings": { "title": "You lose control of the conversation", "body": "The prospect steers, you react, and by the time you try to close, the moment's gone." } },
-        { "type": "symptom", "settings": { "title": "You over-explain instead of asking", "body": "You talk more when you're nervous, which buries your offer under noise." } },
-        { "type": "symptom", "settings": { "title": "You freeze on objections", "body": "\"I need to think about it\" ends the call instead of opening the real conversation." } },
+        { "type": "symptom", "settings": { "title": "You lose control of the conversation", "body": "The prospect leads, you follow, and by the time you try to steer back, the moment to close is already gone." } },
+        { "type": "symptom", "settings": { "title": "You over-explain instead of asking", "body": "Nerves turn into a monologue — and somewhere in all that talking, your actual offer gets buried." } },
+        { "type": "symptom", "settings": { "title": "You freeze on objections", "body": "\"I need to think about it\" ends the call cold, because you never learned what to say next." } },
 
         { "type": "module", "settings": { "number": "Module 1", "title": "The Qualifying Call", "body": "The word-for-word opening used to qualify a prospect and set the frame in under 60 seconds." } },
         { "type": "module", "settings": { "number": "Module 2", "title": "The Objection Rebuttal Library", "body": "Scripted responses to money, timing, \"I need to think about it,\" and the brush-off." } },
